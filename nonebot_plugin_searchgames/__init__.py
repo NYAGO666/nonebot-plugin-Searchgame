@@ -1,4 +1,5 @@
 import requests
+from nonebot.plugin import PluginMetadata
 import json
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import GroupMessageEvent,MessageSegment,PrivateMessageEvent,bot,event
