@@ -1,10 +1,11 @@
-
 import httpx
 from nonebot.plugin import PluginMetadata
 import json
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import GroupMessageEvent,MessageSegment,PrivateMessageEvent,bot,event
 from pathlib import Path
+import nonebot import require
+require("nonebot_plugin_htmlrender")
 from nonebot_plugin_htmlrender import template_to_pic
 from datetime import datetime
 
