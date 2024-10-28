@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nonebot-plugin-searchgames"
-version = "0.1.4"
+version = "0.1.5"
 description = "简单查询游戏steam和switch平台游戏信息的小插件"
 authors = ["NYAGO666"]
 license = "MIT"
