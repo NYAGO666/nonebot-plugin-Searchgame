@@ -1,11 +1,10 @@
-import requests
+
+import httpx
 from nonebot.plugin import PluginMetadata
 import json
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import GroupMessageEvent,MessageSegment,PrivateMessageEvent,bot,event
 from pathlib import Path
-from nonebot import require
-require("nonebot_plugin_htmlrender")
 from nonebot_plugin_htmlrender import template_to_pic
 from datetime import datetime
 
@@ -35,10 +34,11 @@ template_name2 = "switch游戏查询.html"
 @cx.handle()
 async def _(event:GroupMessageEvent):
     gamename = event.get_plaintext().strip().removeprefix('搜游戏').strip()
-
+    
     url = f"https://api.xiaoheihe.cn/game/search/?os_type=web&version=999.0.0&q={gamename}"
-    response = requests.get(url).text
-    data = json.loads(response)
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url)
+        data = response.json()
 
     if not gamename:
         await cx.finish("请输入游戏名")
@@ -134,15 +134,18 @@ async def search_ns_game(event: GroupMessageEvent):
         return
     try:
         url = f'https://switch.jumpvg.com/jump/searchGame/list/v2?type=1&searchName={input}'
-        response = requests.get(url)
-        data = response.json()
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url)
+            data = response.json()
 
         name = data["data"]["gameList"][0]['name']
         id = data["data"]["gameList"][0]['oldGameId']
 
         url_game = f"https://switch.jumpvg.com/jump/game/detail?id={id}"
-        res = requests.get(url_game)
-        data_game = res.json()
+        async with httpx.AsyncClient() as client:
+            res = await client.get(url)
+            data_game = res.json()
+
         
         game_name = data_game["data"]["jumpGame"]["name"]
         game_tag = ', '.join(data_game["data"]["jumpGame"]["categories"])
