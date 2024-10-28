@@ -143,7 +143,7 @@ async def search_ns_game(event: GroupMessageEvent):
 
         url_game = f"https://switch.jumpvg.com/jump/game/detail?id={id}"
         async with httpx.AsyncClient() as client:
-            res = await client.get(url)
+            res = await client.get(url_game)
             data_game = res.json()
 
         
