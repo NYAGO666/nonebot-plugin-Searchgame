@@ -5,8 +5,8 @@ description = "简单查询游戏steam和switch平台游戏信息的小插件"
 authors = ["NYAGO666"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/NYAGO666/nonebot-plugin-Searchgames"
-repository = "https://github.com/NYAGO666/nonebot-plugin-Searchgames"
+homepage = "https://github.com/NYAGO666/nonebot-plugin-searchgame"
+repository = "https://github.com/NYAGO666/nonebot-plugin-searchgame"
 packages = [  
     { include = "nonebot_plugin_searchgames" }  
 ]
