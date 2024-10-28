@@ -208,7 +208,6 @@ async def search_ns_game(event: GroupMessageEvent):
         await ns.send("正在搜索中，请稍等...")
         await ns.finish(MessageSegment.image(output))
     except Exception as e:
-        await ns.send(f"发生错误")
         print(e)
 
 
